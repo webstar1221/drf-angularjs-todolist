@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h3>TodoItem:</h3>
+</div>
+<div class="modal-body">
+    <form name="todoItemForm" class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="title">Title:</label>
+            <div class="controls">
+                <input ng-model="modal.todoitem.title" class="input-xlarge" id="title" required ng-maxlength="100">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="desc">Description:</label>
+            <div class="controls">
+                <textarea ng-model="modal.todoitem.desc" class="input-xlarge" id="desc" required></textarea>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="start_date">Start date:</label>
+            <div class="controls">
+                <input type="text" id="start_date" datepicker-popup="dd.MM.yyyy" ng-model="modal.todoitem.start_date" show-weeks="false" max="modal.todoitem.due_date" required/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="due_date">Due date:</label>
+            <div class="controls">
+                <input type="text" id="due_date" datepicker-popup="dd.MM.yyyy" ng-model="modal.todoitem.due_date" show-weeks="false" min="modal.todoitem.start_date" required/>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="done">Done:</label>
+            <div class="controls">
+                <input type="checkbox" ng-model="modal.todoitem.done" class="input-xlarge" id="done">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-disabled="!todoItemForm.$valid" ng-click="save()">OK</button>
+    <button class="btn btn-warning" ng-click="close()">Cancel</button>
+</div>

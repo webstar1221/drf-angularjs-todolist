@@ -1,0 +1,26 @@
+<h1>Todo Items</h1>
+<button type="button" class="btn btn-success" ng-click="openAddModal()">Add New Item</button>
+<table class="table table-striped">
+    <thead>
+        <td class="span3">Title</td>
+        <td class="span2">Start Date</td>
+        <td class="span2">Due Date</td>
+        <td class="span1">Done</td>
+        <td class="span2"></td>
+    </thead>
+    <tr ng-repeat="todoitem in todoitems | orderBy:'start_date'">
+        <td>{{todoitem.title}}</td>
+        <td>{{todoitem.start_date | date:'dd.MM.yyyy'}}</td>
+        <td>{{todoitem.due_date | date:'dd.MM.yyyy'}}</td>
+        <td>{{todoitem.done && 'Yes' || 'No'}}
+            <button ng-hide='todoitem.done' type="button" class="btn btn-success" ng-click="markAsDone(todoitem)">Done</button>
+        </td>
+        <td>
+            <span class="pull-right">
+                <button type="button" class="btn btn-info" ng-click="openViewModal(todoitem)">View</button>
+                <button type="button" class="btn btn-warning" ng-click="openEditModal(todoitem)">Edit</button>
+                <button type="button" class="btn btn-danger" ng-click="remove(todoitem)">Delete</button>
+            </span>
+        </td>
+    </tr>
+</table>
